@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { getMovies } from '../services/fakeMovieService';
+import { getMovies, handleliked } from '../services/fakeMovieService';
 import 'bootstrap/dist/css/bootstrap.css';
+import Like from './common/like';
 
 class Movie extends Component {
   state = {
@@ -12,6 +13,13 @@ class Movie extends Component {
     this.setState({ movies });
   };
 
+  handleReaction = (movie) => {
+    let movies = [...this.state.movies];
+    let indexMovie = movies.indexOf(movie);
+    movies[indexMovie] = { ...movies[indexMovie] };
+    movies[indexMovie].liked = !movies[indexMovie].liked;
+    this.setState({ movies });
+  };
   render() {
     const { length: count } = this.state.movies;
     if (count === 0)
@@ -27,6 +35,7 @@ class Movie extends Component {
               <th scope='col'>Genre</th>
               <th scope='col'>Stock</th>
               <th scope='col'>Rate</th>
+              <th scope='col'>Reaction</th>
               <th scope='col'></th>
             </tr>
           </thead>
@@ -37,6 +46,12 @@ class Movie extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
+                <td>
+                  <Like
+                    like={movie.liked}
+                    onClick={() => this.handleReaction(movie)}
+                  />
+                </td>
                 <td>
                   <button
                     className='btn btn-danger btn-sm '
