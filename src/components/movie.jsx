@@ -59,7 +59,7 @@ class Movie extends Component {
     } = this.state;
 
     const filtered =
-      activeGenre.name != 'All Genres'
+      activeGenre.name !== 'All Genres'
         ? allMovies.filter((m) => m.genre._id === activeGenre._id)
         : allMovies;
 
@@ -72,6 +72,8 @@ class Movie extends Component {
             items={genres}
             onItemSelected={this.handleGenreSelected}
             activeGenre={activeGenre}
+            textProperty={'name'}
+            valueProperty={'_id'}
           />
         </div>
         <div className='col'>

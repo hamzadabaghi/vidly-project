@@ -11,7 +11,7 @@ const Sidebar = ({
     <ul className='list-group'>
       {items.map((genre) => (
         <li
-          key={genre[valueProperty]}
+          key={genre[textProperty]}
           className={
             genre[textProperty] === activeGenre.name
               ? 'list-group-item active'
