@@ -14,9 +14,9 @@ const Pagination = (props) => {
       className={page === currentPage ? 'page-item active' : 'page-item'}
       style={{ padding: 2 }}
     >
-      <a className='page-link' onClick={() => onPageChange(page)}>
+      <button className='page-link' onClick={() => onPageChange(page)}>
         {page}
-      </a>
+      </button>
     </li>
   ));
 };
