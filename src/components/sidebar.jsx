@@ -17,6 +17,7 @@ const Sidebar = ({
               ? 'list-group-item active'
               : 'list-group-item'
           }
+          style={{ cursor: 'pointer' }}
           onClick={() => onItemSelected(genre)}
           aria-current='true'
         >
